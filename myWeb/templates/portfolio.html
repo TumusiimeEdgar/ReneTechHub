@@ -1,0 +1,415 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ system_info.system_name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+</head>
+<body class="bg-dark text-light" data-bs-spy="scroll" data-bs-target="#mainNav"
+      data-bs-root-margin="0px 0px -60%" data-bs-smooth-scroll="true" tabindex="0">
+
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary-subtle sticky-top py-3">
+        <div class="container">
+
+            <a class="navbar-brand text-warning fw-bold tracking-wide d-none d-lg-block" href="#scrollspyHome">
+                {{ system_info.system_name }}
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none ms-auto d-lg-none" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="d-none d-lg-flex mx-auto">
+                <ul class="navbar-nav gap-lg-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-semibold px-3 py-2 rounded-3" href="#scrollspyHome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-semibold px-3 py-2 rounded-3" href="#scrollspyAbout">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-semibold px-3 py-2 rounded-3" href="#scrollspyResume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-semibold px-3 py-2 rounded-3" href="#scrollspyProjects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-semibold px-3 py-2 rounded-3" href="#scrollspyTestimonials">Testimonials</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-none d-lg-block">
+                <a href="mailto:{{ contact.email }}" class="btn btn-outline-warning btn-sm fw-semibold px-3 rounded-3">
+                    <i class="bi bi-envelope me-2"></i>Hire Me
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end bg-dark text-light mobile-menu" tabindex="-1" id="navMenu"
+         aria-labelledby="navMenuLabel">
+        <div class="offcanvas-header border-bottom border-secondary px-4 py-3">
+            <h5 class="offcanvas-title fw-bold text-uppercase tracking-wide" id="navMenuLabel">
+                {{ system_info.system_name }}
+            </h5>
+            <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-4">
+            <ul class="navbar-nav flex-grow-1 gap-2">
+                <li class="nav-item">
+                    <a class="nav-link mobile-link text-uppercase fw-semibold py-3 px-3 rounded-3 d-flex align-items-center"
+                       href="#scrollspyHome">
+                        <i class="bi bi-house-door me-3 fs-5"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mobile-link text-uppercase fw-semibold py-3 px-3 rounded-3 d-flex align-items-center"
+                       href="#scrollspyAbout">
+                        <i class="bi bi-person me-3 fs-5"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mobile-link text-uppercase fw-semibold py-3 px-3 rounded-3 d-flex align-items-center"
+                       href="#scrollspyResume">
+                        <i class="bi bi-file-earmark-text me-3 fs-5"></i>Resume
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mobile-link text-uppercase fw-semibold py-3 px-3 rounded-3 d-flex align-items-center"
+                       href="#scrollspyProjects">
+                        <i class="bi bi-briefcase me-3 fs-5"></i>Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mobile-link text-uppercase fw-semibold py-3 px-3 rounded-3 d-flex align-items-center"
+                       href="#scrollspyTestimonials">
+                        <i class="bi bi-chat-quote me-3 fs-5"></i>Testimonials
+                    </a>
+                </li>
+            </ul>
+            <div class="mt-4 pt-4 border-top border-secondary">
+                <a href="mailto:{{ contact.email }}" class="btn btn-warning w-100 fw-semibold py-3 rounded-3">
+                    <i class="bi bi-envelope me-2"></i>Hire Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="scrollspyHome"
+             class="hero-section position-relative d-flex flex-column justify-content-center align-items-center text-center">
+
+        {% if system_info.background_image %}
+            <img src="{{ system_info.background_image.url }}" alt="" class="hero-bg" aria-hidden="true">
+            <div class="hero-overlay"></div>
+        {% endif %}
+
+        <div class="container px-4 position-relative">
+            <h1 class="display-1 fw-bold text-white mb-4 lh-1">
+                I'm {{ system_info.owner_name }}.
+            </h1>
+            <p class="hero-subtext lead text-white-50 mx-auto mb-5 lh-lg">
+                {{ system_info.welcome_message }}
+            </p>
+            <div class="d-flex justify-content-center gap-4 fs-3">
+                <a href="{{ contact.facebook_link }}" class="social-link text-white" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{ contact.X_link }}" class="social-link text-white" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                <a href="mailto:{{ contact.email }}" class="social-link text-white" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                <a href="{{ contact.linked_in }}" class="social-link text-white" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <a href="#scrollspyAbout"
+           class="circle-btn btn btn-light rounded-circle position-absolute bottom-0 mb-4 d-flex align-items-center justify-content-center shadow-sm"
+           aria-label="Scroll down">
+            <i class="bi bi-chevron-down fs-4"></i>
+        </a>
+    </section>
+
+    <section id="scrollspyAbout" class="py-6 bg-dark">
+        <div class="container">
+            <div class="row align-items-start g-5">
+                <div class="col-md-4 text-center text-md-start">
+                    {% if about.profile_picture %}
+                        <img src="{{ about.profile_picture.url }}" alt="Profile Picture"
+                            class="profile-img rounded-circle img-fluid border border-4 border-secondary shadow-sm">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <h1 class="section-label text-uppercase border-bottom border-4 border-info d-inline-block pb-2  fw-bold text-white mb-4">About Me</h1>
+                    <p class="text-body-secondary lh-lg mb-5">{{ about.content_message }}</p>
+
+                    <div class="mb-5">
+                        <h5 class="fw-bold text-white mb-3 d-flex align-items-center">
+                            <i class="bi bi-briefcase text-warning me-2"></i>
+                            Services I Offer
+                        </h5>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-check-circle-fill text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Custom Web Applications:</strong> Building powerful, database-driven sites with user authentication, custom dashboards, and smooth workflows using Django.</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-check-circle-fill text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Responsive Web Design:</strong> Creating modern landing pages and multipage websites optimized for mobile, tablet, and desktop screens.</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-check-circle-fill text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">API &amp; Data Integration:</strong> Connecting your website to external tools, databases, and third-party services.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-5">
+                        <h5 class="fw-bold text-white mb-3 d-flex align-items-center">
+                            <i class="bi bi-tools text-warning me-2"></i>
+                            Technology Stack
+                        </h5>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-code-slash text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong
+                                        class="text-white">Languages:</strong> Python, JavaScript, HTML5, CSS3</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-layers text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Frameworks:</strong> Django</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-database text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Database &amp; Deployment:</strong> SQLite / PostgreSQL, Git, GitHub</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-5">
+                        <h5 class="fw-bold text-white mb-3 d-flex align-items-center">
+                            <i class="bi bi-star text-warning me-2"></i>
+                            Why Hire Me?
+                        </h5>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-lightning-charge-fill text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Efficient Problem-Solving:</strong> I leverage advanced developer tools and AI assistance to troubleshoot instantly, drastically reducing project turnaround times and cutting down development costs for you.</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-chat-dots-fill text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Clear Communication:</strong> I break down technical concepts into plain English, ensuring you always know exactly how your project is progressing.</span>
+                            </li>
+                            <li class="d-flex align-items-start text-body-secondary">
+                                <i class="bi bi-graph-up-arrow text-warning me-3 mt-1 flex-shrink-0"></i>
+                                <span><strong class="text-white">Results-Driven Logic:</strong> I don't just write code — I build secure, scalable solutions that solve real business problems.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3 class="section-label text-uppercase border-bottom border-4 border-info d-inline-block pb-2  fw-bold text-white mb-4">
+                        Contact Details
+                    </h3>
+                    <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                        <li class="d-flex align-items-start text-body-secondary">
+                            <i class="bi bi-geo-alt me-3 text-warning fs-5"></i>
+                            <span>{{ contact.address }}</span>
+                        </li>
+                        <li class="d-flex align-items-start text-body-secondary">
+                            <i class="bi bi-telephone me-3 text-warning fs-5"></i>
+                            <span>{{ contact.contact }}</span>
+                        </li>
+                        <li class="d-flex align-items-start text-body-secondary">
+                            <i class="bi bi-envelope me-3 text-warning fs-5"></i>
+                            <a href="mailto:{{ contact.email }}" class="text-info text-decoration-none link-info">{{ contact.email }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scrollspyResume" class="py-6 bg-white text-dark">
+        <div class="container">
+            <div class="row g-5 mb-6">
+                <div class="col-md-3">
+                    <h4 class="section-label text-uppercase fw-bold border-bottom border-4 border-info d-inline-block pb-2 mb-0 tracking-wide">
+                        Education
+                    </h4>
+                </div>
+                <div class="col-md-9">
+                    {% for edu in education %}
+                        <div class="resume-entry mb-5">
+                            <h3 class="fw-bold mb-2">{{ edu.school_name }}</h3>
+                            <p class="text-secondary fst-italic mb-3">
+                                {{ edu.qualification }} &bull; {{ edu.year_display }}
+                            </p>
+                            <p class="lh-lg text-body-dark mb-0">{{ edu.description }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="text-secondary">No education entries yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <hr class="border-info border-2 opacity-25 my-5">
+
+            <div class="row g-5 mb-6" id="scrollspyWork">
+                <div class="col-md-3">
+                    <h4 class="section-label text-uppercase fw-bold border-bottom border-4 border-info d-inline-block pb-2 mb-0 tracking-wide">
+                        Work
+                    </h4>
+                </div>
+                <div class="col-md-9">
+                    {% for job in work %}
+                        <div class="resume-entry mb-5">
+                            <h3 class="fw-bold mb-2">{{ job.company_name }}</h3>
+                            <p class="text-secondary fst-italic mb-3">
+                                {{ job.position }}
+                                <span class="text-muted mx-2">&bull;</span>
+                                {{ job.start_display }} - {{ job.end_display }}
+                            </p>
+                            <p class="lh-lg text-body-dark mb-0">{{ job.description }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="text-secondary">No work experience yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="text-center py-5 px-4 mt-6 bg-light rounded-3">
+                <p class="text-uppercase text-body-secondary fw-bold mb-3 tracking-wide">Check out some of my works.</p>
+                <a href="#scrollspyProjects" class="btn btn-dark fw-semibold px-4 rounded-3">
+                    <i class="bi bi-arrow-down me-2"></i>View Works
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="scrollspyProjects" class="py-6 bg-dark text-light">
+        <div class="container">
+            <h2 class="fw-bold text-white mb-5">Projects</h2>
+            <div class="d-flex flex-column gap-4">
+                {% for item in project %}
+                <div class="card project-card bg-black border-secondary-subtle text-light overflow-hidden rounded-3 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <div class="project-banner-wrapper">
+                                {% if item.project_banner_image %}
+                                <img src="{{ item.project_banner_image.url }}" alt="{{ item.project_name }} Banner"
+                                     class="project-banner">
+                                {% else %}
+                                <img src="{% static 'img/project-placeholder.png' %}"
+                                     alt="{{ item.project_name }} Banner" class="project-banner">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body p-4 p-lg-5">
+                                <h3 class="fw-bold text-white mb-2">{{ item.project_name }}</h3>
+                                <p class="text-info fst-italic mb-4">
+                                    <i class="bi bi-person me-2"></i>{{ item.client }}
+                                </p>
+                                <p class="text-white-50 lh-lg mb-3">{{ item.summery }}</p>
+                                <p class="text-white-50 lh-lg mb-0">{{ item.description }}</p>
+                                {% if item.project_url %}
+                                    <a href="{{ item.project_url }}" target="_blank" rel="noopener noreferrer"
+                                       class="btn btn-outline-warning btn-sm fw-semibold mt-3">
+                                        <i class="bi bi-box-arrow-up-right me-2"></i>Visit The Project
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="text-center py-5">
+                    <i class="bi bi-folder2-open display-4 text-secondary mb-3 d-block"></i>
+                    <p class="text-secondary mb-0">No projects to display yet.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="scrollspyTestimonials" class="testimonials-section position-relative py-6 text-white">
+        {% if testimonials.0.background_image %}
+            <img src="{{ testimonials.0.background_image.url }}" alt="" class="testimonial-bg" aria-hidden="true">
+            <div class="testimonial-overlay"></div>
+        {% endif %}
+        <div class="container position-relative">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-2 text-center">
+                                <span class="display-1 text-white fw-bold lh-1 quote-mark">&ldquo;</span>
+                            </div>
+                            <div class="col-md-10">
+                                <p class="testimonial-quote fst-italic mb-4">
+                                    {{ testimonials.0.testimony }}
+                                </p>
+                                <p class="text-white-50 mb-0 fw-semibold">— {{ testimonials.0.client_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-2 text-center">
+                                <span class="display-1 text-white fw-bold lh-1 quote-mark">&ldquo;</span>
+                            </div>
+                            <div class="col-md-10">
+                                <p class="testimonial-quote fst-italic mb-4">
+                                    {{ testimonials.1.testimony }}
+                                </p>
+                                <p class="text-white-50 mb-0 fw-semibold">— {{ testimonials.1.client_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators position-static mt-5">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0"
+                            class="active bg-white rounded-circle" aria-current="true" aria-label="Testimonial 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                            class="bg-white rounded-circle" aria-label="Testimonial 2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white text-dark pt-6 pb-5">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center gap-4">
+
+                <a href="#scrollspyHome"
+                   class="circle-btn back-to-top btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                   aria-label="Back to top">
+                    <i class="bi bi-chevron-up fs-4"></i>
+                </a>
+
+                <div class="d-flex justify-content-center gap-4 fs-3">
+                    <a href="{{ contact.facebook_link }}" class="social-link text-info" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ contact.X_link }}" class="social-link text-info" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                    <a href="mailto:{{ contact.email }}" class="social-link text-info" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                    <a href="{{ contact.linked_in }}" class="social-link text-info" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+
+                <p class="text-body-secondary mb-0 small text-center">
+                    {{ system_info.system_name }} &copy; Copyright 2026 &bull; All rights reserved
+                </p>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/portfolio.js' %}"></script>
+</body>
+</html>
