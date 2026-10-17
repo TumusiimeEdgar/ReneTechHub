@@ -174,4 +174,6 @@ STORAGES = {
 }
 
 WHITENOISE_MANIFEST_STRICT = False
+
+WHITENOISE_COMPRESS = False
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
