@@ -173,4 +173,5 @@ STORAGES = {
     },
 }
 
+WHITENOISE_MANIFEST_STRICT = False
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
