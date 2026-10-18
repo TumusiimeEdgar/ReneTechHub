@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os
+
+import cloudinary
 from dotenv import load_dotenv
 load_dotenv()
 from pathlib import Path
@@ -170,6 +172,11 @@ MEDIA_URL = '/media/'
 #     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
 #     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 # }
+
+cloudinary.config(
+    cloudinary_url=os.environ.get('CLOUDINARY_URL'),
+    secure=True
+)
 
 LOGGING = {
     'version': 1,
